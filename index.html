@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="app/libs/materialize/dist/css/materialize.css">
+    <link rel="stylesheet" href="app/libs/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" href="app/css/style.css">
+    <link rel="icon" href="app/images/favicon.png">
+    <title>Document</title>
+</head>
+<body class="grey lighten-4" ng-app="RentACar">
+
+    <div class="container"><a href="#" data-activates="nav-mobile" class="button-collapse top-nav" data-sidenav="left" data-closeonclick="false"><i
+            class="mdi-navigation-menu"></i></a></div>
+    <ul id="nav-mobile" class="side-nav fixed">
+        <li id="top-side-nav" class="white-text center red darken-4">
+            <img src="app/img/logos/rent-a-car-logo.png" alt="" class="responsive-img">
+            <div id="divider-side-nav" class="divider"></div>
+        </li>
+
+        <li class="no-padding"><a href="">Vehículos</a></li>
+        <li class="no-padding"><a href="">Conductores</a></li>
+    </ul>
+
+    <!--Inyeccion de vistas-->
+    <main id="vistas" ui-view></main>
+
+    <script src="app/libs/jquery/dist/jquery.js"></script>
+    <script src="app/libs/angular/angular.js"></script>
+    <script src="app/libs/materialize/dist/js/materialize.js"></script>
+    <script src="app/libs/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="app/libs/angular-materialize/src/angular-materialize.js"></script>
+    <script src="app/js/script.js"></script>
+    <script src="app/js/app.js"></script>
+    <script src="app/js/controllers.js"></script>
+</body>
+</html>
