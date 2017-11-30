@@ -8,7 +8,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
         .state('home', {
             url: "/home",
             templateUrl: "app/views/home.html",
-            controller: 'HomeCtrl'
+            controllerAs: 'HomeCtrl'
         })
         .state('login', {
             url: "/login",
@@ -22,19 +22,37 @@ app.run(function($rootScope){
     })
 });
 
-app.service('apiConnection', ['$http', function ($http) {
+app.factory('apiConnection', function ($http) {
+
     var apiURL = 'http://localhost:8000/';
-
-    this.getCars = function () {
-        var data = {'asdasd':'asdasd'};
-        return $http({
-            method: 'GET',
-            url: apiURL + 'cars'
-        }).then(function (success){
-            data = success.data;
-            return data
-        },function (error){
-
-        });
+    
+    var apiConnection = {
+        
+        getCars: function () {
+            return $http.get(apiURL + 'cars').then(function (data) {
+                return data
+            }, function (err) {
+                console.log('Error ' + err);
+            })
+        },
+        
+        getUsers: function () {
+            return $http.get(apiURL + 'users').then(function (data) {
+                return data
+            }, function (err) {
+                console.log('Error ' + err);
+            })
+        },
+        
+        getDrivers: function () {
+            return $http.get(apiURL + 'drivers').then(function (data) {
+                return data
+            }, function (err) {
+                console.log('Error ' + err);
+            })
+        }
+        
     };
-}]);
+
+    return apiConnection
+});

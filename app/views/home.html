@@ -6,90 +6,15 @@
 
 <section>
     <div class="row">
-        <div class="col s12 m4">
+        <div class="col s12 m4" ng-repeat="car in HomeCtrl.cars">
             <div class="card">
                 <div class="card-image">
-                    <img src="app/img/Volkswagen-Gol-Trend.jpg">
+                    <img src="http://localhost:8000/public/jeeps/Jeep-Wrangler_Unlimited.jpg">
                 </div>
-                <span class="card-title">Card Title</span>
+                <span class="card-title">{{car.make + ' ' + car.model}}</span>
                 <div class="card-content">
-                    <p>I am a very simple card. I am good at containing small bits of information.
-                        I am convenient because I require little markup to use effectively.</p>
-                </div>
-                <div class="card-action">
-                    <a href="#">This is a link</a>
-                </div>
-            </div>
-        </div>
-        <div class="col s12 m4">
-            <div class="card">
-                <div class="card-image">
-                    <img src="app/img/Volkswagen-Gol-Trend.jpg">
-                </div>
-                <span class="card-title">Card Title</span>
-                <div class="card-content">
-                    <p>I am a very simple card. I am good at containing small bits of information.
-                        I am convenient because I require little markup to use effectively.</p>
-                </div>
-                <div class="card-action">
-                    <a href="#">This is a link</a>
-                </div>
-            </div>
-        </div>
-        <div class="col s12 m4">
-            <div class="card">
-                <div class="card-image">
-                    <img src="app/img/Volkswagen-Gol-Trend.jpg">
-                </div>
-                <span class="card-title">Card Title</span>
-                <div class="card-content">
-                    <p>I am a very simple card. I am good at containing small bits of information.
-                        I am convenient because I require little markup to use effectively.</p>
-                </div>
-                <div class="card-action">
-                    <a href="#">This is a link</a>
-                </div>
-            </div>
-        </div>
-        <div class="col s12 m4">
-            <div class="card">
-                <div class="card-image">
-                    <img src="app/img/Volkswagen-Gol-Trend.jpg">
-                </div>
-                <span class="card-title">Card Title</span>
-                <div class="card-content">
-                    <p>I am a very simple card. I am good at containing small bits of information.
-                        I am convenient because I require little markup to use effectively.</p>
-                </div>
-                <div class="card-action">
-                    <a href="#">This is a link</a>
-                </div>
-            </div>
-        </div>
-        <div class="col s12 m4">
-            <div class="card">
-                <div class="card-image">
-                    <img src="app/img/Volkswagen-Gol-Trend.jpg">
-                </div>
-                <span class="card-title">Card Title</span>
-                <div class="card-content">
-                    <p>I am a very simple card. I am good at containing small bits of information.
-                        I am convenient because I require little markup to use effectively.</p>
-                </div>
-                <div class="card-action">
-                    <a href="#">This is a link</a>
-                </div>
-            </div>
-        </div>
-        <div class="col s12 m4">
-            <div class="card">
-                <div class="card-image">
-                    <img src="app/img/Volkswagen-Gol-Trend.jpg">
-                </div>
-                <span class="card-title">Card Title</span>
-                <div class="card-content">
-                    <p>I am a very simple card. I am good at containing small bits of information.
-                        I am convenient because I require little markup to use effectively.</p>
+                    <p>{{car.color}}</p>
+                    <p>{{car.price}}</p>
                 </div>
                 <div class="card-action">
                     <a href="#">This is a link</a>
