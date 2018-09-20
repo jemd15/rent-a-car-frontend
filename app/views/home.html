@@ -1,23 +1,56 @@
-<nav class="top-nav red darken-4">
-    <div class="container">
-        <div class="nav-wrapper"><a class="page-title"><h3 class="title">Vehículos</h3></a></div>
-    </div>
-</nav>
+<div class="navbar-fixed">
+    <nav class="grey darken-4">
+        <div class="nav-wrapper row">
+            <a href="#!" class="brand-logo col offset-m1">Vehículos</a>
+        </div>
+    </nav>
+</div>
 
 <section>
+    <div class="row no-margin white z-depth-1">
+        <h5 class="col m1 label">Tipo:</h5>
+        <div class="col m2">
+            <div input-field>
+                <select material-select ng-model="filter.type" class="black-text">
+                    <option value="" selected>Todos</option>
+                    <option value="car">Autos</option>
+                    <option value="van">Camionetas</option>
+                    <option value="station-wagon">Station Wagons</option>
+                    <option value="jeep">Jeeps</option>
+                </select>
+            </div>
+        </div>
+        <h5 class="col m1 label offset-m1">Estado:</h5>
+        <div class="col m2">
+            <div input-field>
+                <select material-select ng-model="filter.state" class="black-text">
+                    <option value="" selected>Todos</option>
+                    <option value="vacancy">Disponible</option>
+                    <option value="rented">Arrendado</option>
+                    <option value="not_available">No Disponible</option>
+                </select>
+            </div>
+        </div>
+    </div>
     <div class="row">
-        <div class="col s12 m4" ng-repeat="car in HomeCtrl.cars">
-            <div class="card">
-                <div class="card-image">
-                    <img src="http://localhost:8000/public/jeeps/Jeep-Wrangler_Unlimited.jpg">
+        <div class="col s12 m4" ng-repeat="car in cars | filter: filter.type | filter: filter.state">
+            <div class="card white-border" ng-class="{hoverable: (car.state === 'vacancy')}">
+                <div class="card-image waves-effect waves-block waves-light center">
+                    <a href="" class="activator btn btn-not-available white red-text text-darken-4" ng-if="car.state == 'not_available' || car.state == 'rented'"> No Disponible</a>
+                    <img class="activator car-img" ng-src="{{apiUrl + car.img}}" ng-class="{'filter-not-available': (car.state == 'not_available' || car.state == 'rented')}">
                 </div>
-                <span class="card-title">{{car.make + ' ' + car.model}}</span>
-                <div class="card-content">
-                    <p>{{car.color}}</p>
-                    <p>{{car.price}}</p>
+                <div class="card-content" ng-class="{'filter-not-available': (car.state == 'not_available' || car.state == 'rented')}">
+                    <span class="card-title activator grey-text text-darken-4">{{car.brand + ' ' + car.model}}<i class="material-icons right">more_vert</i></span>
+                    <div class="center">
+                        <a ui-sref="rentACar({carID: car._id})" class="btn waves-effect waves-red red darken-4" ng-class="{disabled: (car.state == 'not_available' || car.state == 'rented')}">Arrendar</a>
+                    </div>
                 </div>
-                <div class="card-action">
-                    <a href="#">This is a link</a>
+                <div class="card-reveal">
+                    <span class="card-title grey-text text-darken-4">{{car.brand + ' ' + car.model}}<i class="material-icons right">close</i></span>
+                    <p>Color: {{car.color}}</p>
+                    <p>Estado: {{car.state}}</p>
+                    <p>Precio por día: {{car.price | currency:"CLP$":0 }}</p>
+                    <p class="justify">Descripción: {{car.description}}</p>
                 </div>
             </div>
         </div>

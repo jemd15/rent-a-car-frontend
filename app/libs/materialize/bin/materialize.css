@@ -4498,11 +4498,11 @@ small {
   overflow: hidden;
 }
 
-.card.small .card-image + .card-content, .card.medium .card-image + .card-content, .card.large .card-image + .card-content {
+.card.small .card-image + .yellow-text, .card.medium .card-image + .yellow-text, .card.large .card-image + .yellow-text {
   max-height: 40%;
 }
 
-.card.small .card-content, .card.medium .card-content, .card.large .card-content {
+.card.small .yellow-text, .card.medium .yellow-text, .card.large .yellow-text {
   max-height: 100%;
   overflow: hidden;
 }
@@ -4565,7 +4565,7 @@ small {
   position: relative;
 }
 
-.card.horizontal .card-stacked .card-content {
+.card.horizontal .card-stacked .yellow-text {
   -webkit-flex-grow: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;
@@ -4603,17 +4603,17 @@ small {
   padding: 20px;
 }
 
-.card .card-content {
+.card .yellow-text {
   padding: 20px;
   border-radius: 0 0 2px 2px;
 }
 
-.card .card-content p {
+.card .yellow-text p {
   margin: 0;
   color: inherit;
 }
 
-.card .card-content .card-title {
+.card .yellow-text .card-title {
   line-height: 48px;
 }
 

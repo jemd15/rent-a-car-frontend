@@ -579,7 +579,7 @@ body.parallax-demo footer {
     background-color: #FFFFFF;
     color: #212121; }
 
-.card-panel span, .card-content p {
+.card-panel span, .yellow-text p {
     -webkit-font-smoothing: antialiased; }
 
 #images .card-panel .row {

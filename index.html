@@ -12,18 +12,19 @@
     <link rel="icon" href="app/images/favicon.png">
     <title>Document</title>
 </head>
-<body class="grey lighten-4" ng-app="RentACar">
+<body class="grey lighten-3" ng-app="RentACar">
 
     <div class="container"><a href="#" data-activates="nav-mobile" class="button-collapse top-nav" data-sidenav="left" data-closeonclick="false"><i
             class="mdi-navigation-menu"></i></a></div>
     <ul id="nav-mobile" class="side-nav fixed">
-        <li id="top-side-nav" class="white-text center red darken-4">
+        <li id="top-side-nav" class="white-text center grey darken-4">
             <img src="app/img/logos/rent-a-car-logo.png" alt="" class="responsive-img">
             <div id="divider-side-nav" class="divider"></div>
         </li>
-
-        <li class="no-padding"><a href="">Vehículos</a></li>
-        <li class="no-padding"><a href="">Conductores</a></li>
+        <li class="no-padding" ui-sref-active="active"><a ui-sref="home">Vehículos</a></li>
+        <li class="no-padding" ui-sref-active="active"><a ui-sref="drivers">Conductores</a></li>
+        <li class="no-padding" ui-sref-active="clients"><a ui-sref="clients">Clientes Registrados</a></li>
+        <li class="no-padding" ui-sref-active="clients"><a ui-sref="rents">Arriendos</a></li>
     </ul>
 
     <!--Inyeccion de vistas-->
