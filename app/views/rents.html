@@ -1,0 +1,86 @@
+<div class="navbar-fixed">
+    <nav class="grey darken-4">
+        <div class="nav-wrapper row">
+            <a href="#!" class="brand-logo col offset-m1">Arriendos</a>
+            <ul class="hide hide-on-med-and-down row col offset-m3">
+                <li>
+                    <h5 class="col m3 label">Género:</h5>
+                    <div class="col m6">
+                        <div input-field>
+                            <select material-select ng-model="filter.gender" class="black-text">
+                                <option value="" selected>Todos</option>
+                                <option value="man">Hombre</option>
+                                <option value="female">Mujer</option>
+                            </select>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <h5 class="col m4 label">Calificación:</h5>
+                    <div class="col m6">
+                        <div input-field>
+                            <select material-select ng-model="filter.rate" class="black-text">
+                                <option value="" selected>Cualquiera</option>
+                                <option value="1">1 Estrella</option>
+                                <option value="2">2 Estrellas</option>
+                                <option value="3">3 Estrellas</option>
+                                <option value="4">4 Estrellas</option>
+                                <option value="5">5 Estrellas</option>
+                            </select>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+<div class="filter-bar row no-margin white z-depth-1 hide">
+    <h5 class="col m1 label">Género:</h5>
+    <div class="col m2">
+        <div input-field>
+            <select material-select ng-model="filter.gender" class="black-text">
+                <option value="" selected>Todos</option>
+                <option value="man">Hombre</option>
+                <option value="female">Mujer</option>
+            </select>
+        </div>
+    </div>
+    <h5 class="col m2 label offset-m1">Calificación:</h5>
+    <div class="col m2">
+        <div input-field>
+            <select material-select ng-model="filter.rate" class="black-text">
+                <option value="" selected>Cualquiera</option>
+                <option value="1">1 Estrella</option>
+                <option value="2">2 Estrellas</option>
+                <option value="3">3 Estrellas</option>
+                <option value="4">4 Estrellas</option>
+                <option value="5">5 Estrellas</option>
+            </select>
+        </div>
+    </div>
+</div>
+<section class="card-panel col">
+    <table class="striped">
+        <thead>
+        <tr>
+            <th>ID Renta</th>
+            <th>Fecha de Recepción</th>
+            <th>Fecha de Devolución</th>
+            <th>Garantía</th>
+            <th>Precio Total</th>
+            <th></th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr ng-repeat="rent in rents">
+            <td>{{rent._id}}</td>
+            <td>{{rent.receptionDate}}</td>
+            <td>{{rent.returnDate}}</td>
+            <td>{{rent.guarantee}}</td>
+            <td>{{rent.totalAmount}}</td>
+            <th><a href="" class="btn red darken-4">X</a></th>
+        </tr>
+        </tbody>
+    </table>
+</section>

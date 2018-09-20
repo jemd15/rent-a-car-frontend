@@ -1,0 +1,255 @@
+<div class="navbar-fixed">
+    <nav class="grey darken-4">
+        <div class="nav-wrapper row">
+            <a href="#!" class="brand-logo col offset-m1">Arrendar</a>
+        </div>
+    </nav>
+</div>
+<section class="row">
+    <div class="col s12 m4">
+        <div class="card">
+            <div class="card-image">
+                <img class="activator car-img" ng-src="{{apiUrl + car.img}}" ng-class="{'filter-not-available': (car.state == 'not_available' || car.state == 'rented')}">
+            </div>
+            <div class="card-content">
+                <span class="card-title activator grey-text text-darken-4">{{car.brand + ' ' + car.model}}</span>
+                <p>Precio por día: {{car.price | currency:"CLP$":0 }}</p>
+                <p class="justify">Descripción: {{car.description}}</p>
+            </div>
+        </div>
+    </div>
+    <div class="col m8">
+        <div class="card-panel col">
+            <form class="" action="#">
+                <div class="row"></div>
+                <span class="col m3">Tipo de Cliente: </span>
+                <div class="col m3">
+                    <input name="convenio" type="radio" id="con-convenio" class="with-gap" ng-model="convenio" ng-value="'con-convenio'"/>
+                    <label for="con-convenio">Con Convenio</label>
+                </div>
+                <div class="col m3">
+                    <input name="convenio" type="radio" id="sin-convenio" class="with-gap" ng-model="convenio" ng-value="'sin-convenio'"/>
+                    <label for="sin-convenio">Sin Convenio</label>
+                </div>
+                <!--Con Convenio-->
+                <div ng-if="convenio === 'con-convenio'" class="col s12">
+                    <div class="row">
+                        <form class="col s12">
+                            <!--datos del cliente-->
+                            <div class="divider"></div>
+                            <p class="center-align">Datos del Cliente</p>
+                            <div class="row">
+                                <div class="input-field col s6">
+                                    <i class="material-icons prefix">account_circle</i>
+                                    <input id="client.firstname" type="text" class="validate">
+                                    <label for="client.firstname">Nombre</label>
+                                </div>
+                                <div class="input-field col s6">
+                                    <input id="client.lastname" type="text" class="validate">
+                                    <label for="client.lastname">Apellido</label>
+                                </div>
+                                <div class="input-field col s6">
+                                    <i class="material-icons prefix">email</i>
+                                    <input id="client.email" type="email" class="validate">
+                                    <label for="client.email">Email</label>
+                                </div>
+                                <div class="input-field col s6">
+                                    <i class="material-icons prefix">phone</i>
+                                    <input id="client.telephone" type="tel" class="validate">
+                                    <label for="client.telephone">Teléfono</label>
+                                </div>
+                                <div class="input-field col s6">
+                                    <i class="material-icons prefix">assignment_ind</i>
+                                    <input id="client.rut" type="text" class="validate">
+                                    <label for="client.rut">Rut</label>
+                                </div>
+                            </div>
+                            <!--datos del arriendo-->
+                            <div class="divider"></div>
+                            <p class="center-align">Datos del Arriendo</p>
+                            <div class="input-field col s6">
+                                <i class="material-icons prefix">date_range</i>
+                                <input class="right-align"
+                                       input-date
+                                       type="text"
+                                       name="fechaDeArriendo"
+                                       id="fechaDeArriendo"
+                                       ng-model="rent.returnDate"
+                                       container=""
+                                       format="dd/mm/yyyy"
+                                       months-full="{{ month }}"
+                                       months-short="{{ monthShort }}"
+                                       weekdays-full="{{ weekdaysFull }}"
+                                       weekdays-short="{{ weekdaysShort }}"
+                                       weekdays-letter="{{ weekdaysLetter }}"
+                                       disable="disable"
+                                       min="{{ minDate }}"
+                                       max="{{ maxDate }}"
+                                       today="today"
+                                       first-day="1"
+                                       clear="clear"
+                                       close="close"
+                                       select-years="2"/>
+                                <label id="rent.returnDate" for="rent.returnDate">Fecha de Devolución</label>
+                            </div>
+                            <div class="input-field col s6">
+                                <i class="material-icons prefix">archive</i>
+                                <input id="guarantee" type="text" class="validate" ng-model="rent.guarantee" ng-change="rent.guarantee = (rent.guarantee | currency:'CLP$':0)">
+                                <label for="guarantee">Garantía</label>
+                            </div>
+                            <div class="col m6 offset-m6">
+                                <table>
+                                    <tbody>
+                                    <tr>
+                                        <td>Total Neto:</td>
+                                        <td>{{rent.totalAmount | currency:'CLP$':0}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>I.V.A:</td>
+                                        <td ng-model="iva">{{ iva}}%</td>
+                                    </tr>
+                                    <tr>
+                                        <td><h5>Total + I.V.A:</h5></td>
+                                        <td><h6>{{rent.totalAmount | currency:'CLP$':0}}</h6></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="col m6 offset-m6">
+                                <a ui-sref="home" class="btn red darken-4">Cancelar</a>
+                                <a href="" class="btn grey darken-4">Arrendar</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <!--Sin Convenio-->
+                <div ng-if="convenio === 'sin-convenio'" class="col s12">
+                    <div class="row">
+                        <form class="col s12">
+                            <!--datos del cliente-->
+                            <div class="divider"></div>
+                            <p class="center-align">Datos del Cliente</p>
+                            <div class="row">
+                                <div class="input-field col s6">
+                                    <i class="material-icons prefix">account_circle</i>
+                                    <input id="client.firstname" type="text" class="validate">
+                                    <label for="client.firstname">Nombre</label>
+                                </div>
+                                <div class="input-field col s6">
+                                    <input id="client.lastname" type="text" class="validate">
+                                    <label for="client.lastname">Apellido</label>
+                                </div>
+                                <div class="input-field col s6">
+                                    <i class="material-icons prefix">email</i>
+                                    <input id="client.email" type="email" class="validate">
+                                    <label for="client.email">Email</label>
+                                </div>
+                                <div class="input-field col s6">
+                                    <i class="material-icons prefix">phone</i>
+                                    <input id="client.telephone" type="tel" class="validate">
+                                    <label for="client.telephone">Teléfono</label>
+                                </div>
+                                <div class="input-field col s6">
+                                    <i class="material-icons prefix">assignment_ind</i>
+                                    <input id="client.rut" type="text" class="validate">
+                                    <label for="client.rut">Rut</label>
+                                </div>
+                            </div>
+                            <!--datos del arriendo-->
+                            <div class="divider"></div>
+                            <p class="center-align">Datos del Arriendo</p>
+                            <div class="input-field col s6">
+                                <i class="material-icons prefix">date_range</i>
+                                <input class="right-align"
+                                       input-date
+                                       type="text"
+                                       name="fechaDeDevolucion"
+                                       id="fechaDeDevolucion"
+                                       ng-model="rent.receptionDate"
+                                       container=""
+                                       format="dd/mm/yyyy"
+                                       months-full="{{ month }}"
+                                       months-short="{{ monthShort }}"
+                                       weekdays-full="{{ weekdaysFull }}"
+                                       weekdays-short="{{ weekdaysShort }}"
+                                       weekdays-letter="{{ weekdaysLetter }}"
+                                       disable="disable"
+                                       min="{{ minDate }}"
+                                       max="{{ maxDate }}"
+                                       today="today"
+                                       first-day="1"
+                                       clear="clear"
+                                       close="close"
+                                       select-years="2"/>
+                                <label id="rent.receptionDate" for="rent.returnDate">Fecha de Entrega</label>
+                            </div>
+                            <div class="input-field col s6">
+                                <i class="material-icons prefix">date_range</i>
+                                <input class="right-align"
+                                       input-date
+                                       type="text"
+                                       name="fechaDeArriendo"
+                                       id="fechaDeArriendo"
+                                       ng-model="rent.returnDate"
+                                       container=""
+                                       format="dd/mm/yyyy"
+                                       months-full="{{ month }}"
+                                       months-short="{{ monthShort }}"
+                                       weekdays-full="{{ weekdaysFull }}"
+                                       weekdays-short="{{ weekdaysShort }}"
+                                       weekdays-letter="{{ weekdaysLetter }}"
+                                       disable="disable"
+                                       min="{{ minDate }}"
+                                       max="{{ maxDate }}"
+                                       today="today"
+                                       first-day="1"
+                                       clear="clear"
+                                       close="close"
+                                       select-years="2"/>
+                                <label id="rent.returnDate" for="rent.returnDate">Fecha de Devolución</label>
+                            </div>
+                            <div class="input-field col s6">
+                                <i class="material-icons prefix">archive</i>
+                                <input id="guarantee" type="text" class="validate" ng-model="rent.guarantee" ng-change="rent.guarantee = (rent.guarantee | currency:'CLP$':0)">
+                                <label for="guarantee">Garantía</label>
+                            </div>
+                            <div class="col m6 offset-m6">
+                                <table>
+                                    <tbody>
+                                    <tr>
+                                        <td>Total Neto:</td>
+                                        <td>{{rent.totalAmount | currency:'CLP$':0}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>I.V.A:</td>
+                                        <td ng-model="iva">{{ iva}}%</td>
+                                    </tr>
+                                    <tr>
+                                        <td><h5>Total + I.V.A:</h5></td>
+                                        <td><h6>{{rent.totalAmount}}</h6></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="col m6 offset-m6">
+                                <a ui-sref="home" class="btn red darken-4">Cancelar</a>
+                                <a ng-click="makeRent(client.firstname, client.lastname, client.telephone, client.rut, rent.receptionDate, rent.returnDate, client.email, rent.guarantee, car.id, driver.id)" class="btn grey darken-4">Arrendar</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+<!-- Modal Structure -->
+<div id="rentModal" class="modal">
+    <div class="modal-content">
+        <h4>Arriendo completado</h4>
+        <p>El arriendo ha sido realizado con éxito.</p>
+    </div>
+    <div class="modal-footer">
+        <a ng-click="closeRentModal()" class="red darken-4 modal-action modal-close waves-effect waves-red btn-flat">Aceptar</a>
+    </div>
+</div>

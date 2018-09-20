@@ -1,0 +1,82 @@
+<div class="navbar-fixed">
+    <nav class="grey darken-4">
+        <div class="nav-wrapper row">
+            <a href="#!" class="brand-logo col offset-m1">Conductores</a>
+        </div>
+    </nav>
+</div>
+
+<section>
+    <div class="filter-bar row no-margin white z-depth-1">
+        <h5 class="col m1 label">Género:</h5>
+        <div class="col m2">
+            <div input-field>
+                <select material-select ng-model="filter.gender" class="black-text">
+                    <option value="" selected>Todos</option>
+                    <option value="man">Hombre</option>
+                    <option value="female">Mujer</option>
+                </select>
+            </div>
+        </div>
+        <h5 class="col m2 label offset-m1">Calificación:</h5>
+        <div class="col m2">
+            <div input-field>
+                <select material-select ng-model="filter.rate" class="black-text">
+                    <option value="" selected>Cualquiera</option>
+                    <option value="1">1 Estrella</option>
+                    <option value="2">2 Estrellas</option>
+                    <option value="3">3 Estrellas</option>
+                    <option value="4">4 Estrellas</option>
+                    <option value="5">5 Estrellas</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s12 m4" ng-repeat="driver in drivers | filter: filter.gender | filter: filter.rate">
+            <div class="card white-border hoverable">
+                <div class="card-image waves-effect waves-block waves-light">
+                    <img class="car-img activator" ng-src="{{apiUrl + driver.img}}">
+                    <span class="card-title text-shadow">{{driver.name + ' ' + driver.lastname}}</span>
+                </div>
+                <div class="card-content activator">
+                    <div class="card-title activator grey-text text-darken-4">
+                        <i class="material-icons right">more_vert</i>
+                        <div class="yellow-text" ng-if="driver.rate === '1'">
+                            <i class="fa fa-star text-shadow" aria-hidden="true"></i>
+                        </div>
+                        <div class="yellow-text" ng-if="driver.rate === '2'">
+                            <i class="fa fa-star text-shadow" aria-hidden="true"></i>
+                            <i class="fa fa-star text-shadow" aria-hidden="true"></i>
+                        </div>
+                        <div class="yellow-text" ng-if="driver.rate === '3'">
+                            <i class="fa fa-star text-shadow" aria-hidden="true"></i>
+                            <i class="fa fa-star text-shadow" aria-hidden="true"></i>
+                            <i class="fa fa-star text-shadow" aria-hidden="true"></i>
+                        </div>
+                        <div class="yellow-text" ng-if="driver.rate === '4'">
+                            <i class="fa fa-star text-shadow" aria-hidden="true"></i>
+                            <i class="fa fa-star text-shadow" aria-hidden="true"></i>
+                            <i class="fa fa-star text-shadow" aria-hidden="true"></i>
+                            <i class="fa fa-star text-shadow" aria-hidden="true"></i>
+                        </div>
+                        <div class="yellow-text" ng-if="driver.rate === '5'">
+                            <i class="fa fa-star text-shadow" aria-hidden="true"></i>
+                            <i class="fa fa-star text-shadow" aria-hidden="true"></i>
+                            <i class="fa fa-star text-shadow" aria-hidden="true"></i>
+                            <i class="fa fa-star text-shadow" aria-hidden="true"></i>
+                            <i class="fa fa-star text-shadow" aria-hidden="true"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-reveal">
+                    <span class="card-title grey-text text-darken-4">{{driver.name + ' ' + driver.lastname}}<i class="material-icons right">close</i></span>
+                    <p>Rut: {{driver.rut}}</p>
+                    <p>Telefono: {{driver.telephone}}</p>
+                    <p>Email: {{driver.email}}</p>
+                    <p>Descripción: {{driver.description}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
